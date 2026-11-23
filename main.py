@@ -3,3 +3,4 @@ def super():
 print('asdadsad')
 super()
 print('novoe')
+print('B2')
