@@ -1,23 +1,16 @@
 import sys
 
+from PyQt6 import uic
 from PyQt6.QtCore import QPoint
 from PyQt6.QtGui import QPainter, QColor
-from PyQt6.QtWidgets import QWidget, QApplication, QPushButton
+from PyQt6.QtWidgets import QWidget, QApplication, QPushButton, QMainWindow
 from random import randint
 
 
-class Yellow_Circles(QWidget):
+class YellowCircles(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.initUI()
-
-    def initUI(self):
-        self.setGeometry(300, 300, 800, 800)
-        self.setWindowTitle('кружочки')
-
-        self.btn = QPushButton('круг', self)
-        self.btn.move(300, 20)
-        self.btn.resize(120, 30)
+        uic.loadUi('Ui.ui', self)
         self.btn.clicked.connect(self.trigger_paint)
 
         self.do_paint = False
@@ -30,10 +23,10 @@ class Yellow_Circles(QWidget):
         if self.do_paint:
             qp = QPainter()
             qp.begin(self)
-            self.draw_flag(qp)
+            self.draw_circle(qp)
             qp.end()
 
-    def draw_flag(self, qp):
+    def draw_circle(self, qp):
         qp.setBrush(QColor(255, 255, 0))
         center = QPoint(randint(10, 500), randint(10, 500))
         rad = randint(10, 50)
@@ -42,6 +35,6 @@ class Yellow_Circles(QWidget):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = Yellow_Circles()
+    ex = YellowCircles()
     ex.show()
     sys.exit(app.exec())
