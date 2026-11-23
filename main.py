@@ -1,1 +1,2 @@
 print('asdadsad')
+print('novoe')
