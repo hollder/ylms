@@ -1,2 +1,0 @@
-print('asdadsad')
-print('novoe')
